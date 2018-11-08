@@ -1,0 +1,8 @@
+[package]
+name = "Rust"
+version = "0.1.0"
+authors = ["eduard.parvu <parvueduard@gmail.com>"]
+
+[dependencies]
+
+rand = "0.6.0-pre.1"
