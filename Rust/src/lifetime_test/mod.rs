@@ -1,5 +1,7 @@
 use std::fmt::Display;
 
+mod inner_mod_to_show_dir_struct;
+
 fn test11() {
     let string1 = String::from("abcd");
     let string2 = "xyz";
