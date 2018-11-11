@@ -1,11 +1,16 @@
 extern crate rand;
 
 mod lifetime_test;
+mod functional_test;
+mod iterators;
 
 use std::io;
 use std::cmp::Ordering;
 use rand::Rng;
 use std::fmt::Display;
+
+use functional_test::inner;
+use iterators::inner;
 
 // example of a struct
 
