@@ -5,13 +5,13 @@ use std::error::Error;
 use std::fs;
 use std::env;
 
-pub struct Config<'a> {
-    pub query: &'a str,
-    pub filename: &'a str,
+pub struct Config {
+    pub query: String,
+    pub filename: String,
     pub case_sensitive: bool,
 }
 
-impl<'a> Config<'a> {
+impl Config {
     pub fn new(mut args: env::Args) -> Result<Config, &'static str> {
         args.next();
 
@@ -58,6 +58,6 @@ fn search<'a>(query: &str, contents: &'a str ) -> Vec<&'a str> {
 fn search_case_insensitive<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
     contents
         .lines()
-        .filter(|line| line.to_lowercase().contains(query.to_lowercase()))
+        .filter(|line| line.to_lowercase().as_str().contains(query.to_lowercase().as_str()))
         .collect()
 }
