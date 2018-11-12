@@ -3,6 +3,7 @@ extern crate rand;
 mod lifetime_test;
 mod functional_test;
 mod iterators;
+mod smart_pointers;
 
 use std::io;
 use std::cmp::Ordering;
