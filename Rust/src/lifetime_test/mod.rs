@@ -47,3 +47,36 @@ fn longest_with_an_announcement<'a, T>(x: &'a str, y: &'a str, ann: T) -> &'a st
         y
     }
 }
+
+pub struct DataToBeContained;
+
+impl DataToBeContained {
+    fn say(&self) {
+        println!("Say something!")
+    }
+}
+
+impl Drop for DataToBeContained {
+    fn drop(&mut self) {
+        println!("Data to be contained, memory released!")
+    }
+}
+
+struct Container<'a> {
+    data: &'a DataToBeContained // so this specifies that the container instance has the same lifetime as the data that it contains
+}
+
+pub fn test_how_lifetime_works_with_objects() {
+    let data_to_be_contained = DataToBeContained {};
+
+    {
+        let container = Container {
+            data: &data_to_be_contained
+        };
+
+        // container should be destroyed here but because data_to_be_contained still lives it's life is extended
+        // so that is why we get `Say something!` first then `Data to be contained, memory released!` second
+    }
+
+    data_to_be_contained.say();
+}

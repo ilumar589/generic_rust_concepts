@@ -15,6 +15,8 @@ use std::fmt::Display;
 use functional_test::inner as functional_inner;
 use iterators::inner as iterators_inners;
 
+use smart_pointers::inner as smart_pointer_inner;
+
 // example of a struct
 
 #[derive(Debug)]
@@ -47,6 +49,10 @@ impl Rectangle {
 }
 
 fn main() {
+    lifetime_test::test_how_lifetime_works_with_objects();
+
+    smart_pointer_inner::main();
+
 //  A string literal has a known size at compile time and is hardcoded into the executable
     let string_literal = "a string literal";
 

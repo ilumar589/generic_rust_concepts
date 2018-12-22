@@ -1,3 +1,6 @@
+use std::ops::Deref;
+use std::mem::drop;
+
 // implementing a cons list (I guess another term for linked list. Don't see any difference from the initial explanation)
 
 enum List {
@@ -15,10 +18,43 @@ fn use_pointer() {
     let list = List2::Cons(1, Box::new(List2::Cons(2, Box::new(List2::Cons(3, Box::new(List2::Nil))))));
 }
 
-struct MyBox<T>(T); // tuple struct with one value ?
+struct MyBox<T>(T); // tuple struct with one value ? yeah this is a tuple struct
 
 impl <T> MyBox<T> {
     fn new(x: T) -> MyBox<T> {
         MyBox(x)
     }
+}
+
+impl<T> Deref for MyBox<T> {
+    type Target = T;
+
+    fn deref(&self) -> &T {
+        &self.0
+    }
+}
+
+// example implementing the Drop trait
+
+struct CustomSmartPointer {
+    data: String,
+}
+
+impl Drop for CustomSmartPointer {
+    fn drop(&mut self) {
+        println!("Dropping CustomSmartPointer with data `{}`!", self.data)
+    }
+}
+
+// can use manual release of memory function -> drop()
+enum AnotherList {
+    Cons(i32, Box<AnotherList>),
+    Nil
+}
+
+
+pub fn main() {
+    let a = AnotherList::Cons(5,Box::new(AnotherList::Cons(10, Box::new(AnotherList::Nil))));
+    let b = AnotherList::Cons(3, Box::new(a));
+//    let c = AnotherList::Cons(4, Box::new(a));
 }
