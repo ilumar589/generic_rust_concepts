@@ -4,6 +4,8 @@ mod lifetime_test;
 mod functional_test;
 mod iterators;
 mod smart_pointers;
+mod a_dir;
+
 
 use std::io;
 use std::cmp::Ordering;

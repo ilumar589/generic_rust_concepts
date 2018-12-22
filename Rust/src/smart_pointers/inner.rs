@@ -12,5 +12,13 @@ enum List2 {
 
 
 fn use_pointer() {
-//    let list = Cons(1, Box::new(Cons(2, Box::new(Cons(3, Box::new(Nil))))));
+    let list = List2::Cons(1, Box::new(List2::Cons(2, Box::new(List2::Cons(3, Box::new(List2::Nil))))));
+}
+
+struct MyBox<T>(T); // tuple struct with one value ?
+
+impl <T> MyBox<T> {
+    fn new(x: T) -> MyBox<T> {
+        MyBox(x)
+    }
 }
