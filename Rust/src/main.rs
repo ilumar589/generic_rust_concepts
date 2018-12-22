@@ -10,8 +10,8 @@ use std::cmp::Ordering;
 use rand::Rng;
 use std::fmt::Display;
 
-use functional_test::inner;
-use iterators::inner;
+use functional_test::inner as functional_inner;
+use iterators::inner as iterators_inners;
 
 // example of a struct
 
