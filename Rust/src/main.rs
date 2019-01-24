@@ -5,6 +5,7 @@ mod functional_test;
 mod iterators;
 mod smart_pointers;
 mod a_dir;
+mod thread_examples;
 
 
 use std::io;
@@ -16,6 +17,8 @@ use functional_test::inner as functional_inner;
 use iterators::inner as iterators_inners;
 
 use smart_pointers::inner as smart_pointer_inner;
+
+use thread_examples::inner_thread_examples as my_threads;
 
 // example of a struct
 
@@ -49,6 +52,9 @@ impl Rectangle {
 }
 
 fn main() {
+
+    my_threads::main();
+
     lifetime_test::test_how_lifetime_works_with_objects();
 
     smart_pointer_inner::main();
