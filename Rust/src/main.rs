@@ -6,6 +6,9 @@ mod iterators;
 mod smart_pointers;
 mod a_dir;
 mod thread_examples;
+mod object_oriented_examples;
+mod patterns_and_matching;
+mod advanced_features;
 
 
 use std::io;
@@ -19,6 +22,9 @@ use iterators::inner as iterators_inners;
 use smart_pointers::inner as smart_pointer_inner;
 
 use thread_examples::inner_thread_examples as my_threads;
+
+use advanced_features::{unsafe_rust as unsafe_rust,
+                        advanced_lifetimes as advanced_lifetimes};
 
 // example of a struct
 
@@ -52,6 +58,20 @@ impl Rectangle {
 }
 
 fn main() {
+
+    my_threads::another_message_passing();
+
+    let rect1 = Rectangle {
+        width: 100,
+        height: 200
+    };
+
+    let rect2 = Rectangle {
+        width: 50,
+        height: 100
+    };
+
+    rect1.can_hold(&rect2);
 
     my_threads::main();
 

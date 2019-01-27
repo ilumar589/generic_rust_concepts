@@ -21,7 +21,7 @@ impl Counter {
 impl Iterator for Counter {
     type Item = u32; // associated item type, don't know what this concept is yet
 
-    fn next(&mut self) -> Option<<Self as Iterator>::Item> {
+    fn next(&mut self) -> Option<<Self as Iterator>::Item> { //Self refers to type (Counter in out case). as Iterator syntax is to specify that our type is an iterator I guess, in order to work with for loops
         self.count += 1;
 
         if self.count < 6 {
